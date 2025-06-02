@@ -1,5 +1,8 @@
 const carrito = []
 
+function formatearPrecio(valor) {
+  return valor % 1 === 0 ? valor.toFixed(0) : valor.toFixed(2)
+}
 function actualizarCarrito() {
   const lista = document.getElementById("listaCarrito")
   const total = document.getElementById("total")
@@ -24,7 +27,7 @@ function actualizarCarrito() {
     suma += producto.precio * producto.cantidad
   })
 
-  total.textContent = `${suma.toFixed(2)}`
+total.textContent = `${(suma % 1 === 0 ? suma.toFixed(0) : suma.toFixed(2))}`  
   if (botonFlotante) {
     botonFlotante.textContent = `🛒 Ver carrito ($${suma.toFixed(2)})`
   }
